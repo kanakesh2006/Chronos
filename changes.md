@@ -30,3 +30,8 @@ Antigravity : Scaffolded Pydantic schemas, `VirtualClock` façade, `EpochArbiter
 Opencode : (Decommissioned, tasks reassigned to Antigravity)
 Files: `backend/chronos/schemas.py`, `backend/chronos/clock.py`, `backend/chronos/effects.py`, `backend/chronos/epoch.py`, `backend/chronos/ledger.py`, `backend/tests/test_invariants.py`, `backend/tests/test_ledger.py`, `changes.md`
 Flags: Phase 0 is complete. Proceeding to Phase 1 (Fast Path & Egress).
+
+### [Phase 1] Fast Path & Egress — 2026-09-23
+Antigravity : Built the `FastPathEmitter` with monotonic `floor_token` tracking and strictly restricted return types (`SpokenAction | ClarificationAction`) ensuring structural compliance with Invariant 3. Developed the `EgressSerializer` implementing fail-closed validation with a single structural repair attempt and a final degraded fallback, alongside the telemetry tee for JSONL output. Included exhaustive tests for both modules.
+Files: `backend/chronos/fastpath.py`, `backend/chronos/egress.py`, `backend/tests/test_fastpath.py`, `backend/tests/test_egress.py`, `changes.md`
+Flags: Phase 1 is complete. Moving on to Phase 2 (Multimodal).
