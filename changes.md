@@ -35,3 +35,8 @@ Flags: Phase 0 is complete. Proceeding to Phase 1 (Fast Path & Egress).
 Antigravity : Built the `FastPathEmitter` with monotonic `floor_token` tracking and strictly restricted return types (`SpokenAction | ClarificationAction`) ensuring structural compliance with Invariant 3. Developed the `EgressSerializer` implementing fail-closed validation with a single structural repair attempt and a final degraded fallback, alongside the telemetry tee for JSONL output. Included exhaustive tests for both modules.
 Files: `backend/chronos/fastpath.py`, `backend/chronos/egress.py`, `backend/tests/test_fastpath.py`, `backend/tests/test_egress.py`, `changes.md`
 Flags: Phase 1 is complete. Moving on to Phase 2 (Multimodal).
+
+### [Phase 2] Multimodal & Belief Pipeline — 2026-09-23
+Antigravity : Implemented `ASRWorker` using `faster-whisper` with `ModelLoadGuard` to enforce warm-up constraints, and `OCRWorker` using `pytesseract`. Built the Tier-1 Lexical Fast-Filter (`tier1.py`) for sub-millisecond keyword and disfluency detection, and the Contradiction Resolver (`fusion.py`) mirroring the priority table from the spec (visual > audio for identity slots, audio > visual for intent) and hard-override check. Fully unit-tested all contradiction logic rows and tier 1 checks. All tests passed.
+Files: `backend/chronos/multimodal/asr.py`, `backend/chronos/multimodal/ocr.py`, `backend/chronos/belief/tier1.py`, `backend/chronos/belief/fusion.py`, `backend/tests/test_belief.py`, `changes.md`
+Flags: Phase 2 is complete. Proceeding to Phase 3 (Planner & Clock Supervisor).
