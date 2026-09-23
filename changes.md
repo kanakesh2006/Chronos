@@ -45,3 +45,8 @@ Flags: Phase 2 is complete. Proceeding to Phase 3 (Planner & Clock Supervisor).
 Antigravity : Built `ClockSupervisor` based strictly on real wall time to govern the 4 degradation tiers: `full`, `throttled`, `degraded`, and `terminal`. Implemented `invoke_terminal_fallback` to construct a correct `FinalResponseAction` and synchronously poison the `EffectGateway`. Implemented `SlowPathPlanner` and `ToolManifest` to adapt planning logic dynamically based on supervisor tiers. Scaffolded `Tier2SemanticArbiter` for future integration. Added tests for Clock Supervisor logic and successfully tested the terminal fallback constraint. All 20 tests pass.
 Files: `backend/chronos/supervisor.py`, `backend/chronos/planner.py`, `backend/chronos/belief/tier2.py`, `backend/tests/test_supervisor.py`, `changes.md`
 Flags: Phase 3 is complete. Proceeding to Phase 4 (Integration, Dashboard, Deploy).
+
+### [Phase 4] Integration, Dashboard, & Deploy — 2026-09-23
+Antigravity : Implemented Phase 4. Created `harness_adapter.py` (FastAPI + WebSockets) for mock integration. Initialized Next.js telemetry dashboard. Added Dockerfiles and `docker-compose.yml` for NFR-3 reproducibility. Wrote `test_integration.py` successfully reproducing the adversarial trace described in Spec §16 (flight booking + late visual frame) ensuring no double booking.
+Files: `backend/chronos/harness_adapter.py`, `dashboard/src/app/page.tsx`, `backend/Dockerfile`, `dashboard/Dockerfile`, `docker-compose.yml`, `backend/tests/test_integration.py`
+Flags: Phase 4 complete. Entering Phase 5: Submission Hardening.
