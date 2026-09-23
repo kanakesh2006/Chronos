@@ -40,3 +40,8 @@ Flags: Phase 1 is complete. Moving on to Phase 2 (Multimodal).
 Antigravity : Implemented `ASRWorker` using `faster-whisper` with `ModelLoadGuard` to enforce warm-up constraints, and `OCRWorker` using `pytesseract`. Built the Tier-1 Lexical Fast-Filter (`tier1.py`) for sub-millisecond keyword and disfluency detection, and the Contradiction Resolver (`fusion.py`) mirroring the priority table from the spec (visual > audio for identity slots, audio > visual for intent) and hard-override check. Fully unit-tested all contradiction logic rows and tier 1 checks. All tests passed.
 Files: `backend/chronos/multimodal/asr.py`, `backend/chronos/multimodal/ocr.py`, `backend/chronos/belief/tier1.py`, `backend/chronos/belief/fusion.py`, `backend/tests/test_belief.py`, `changes.md`
 Flags: Phase 2 is complete. Proceeding to Phase 3 (Planner & Clock Supervisor).
+
+### [Phase 3] Planner & Clock Supervisor — 2026-09-23
+Antigravity : Built `ClockSupervisor` based strictly on real wall time to govern the 4 degradation tiers: `full`, `throttled`, `degraded`, and `terminal`. Implemented `invoke_terminal_fallback` to construct a correct `FinalResponseAction` and synchronously poison the `EffectGateway`. Implemented `SlowPathPlanner` and `ToolManifest` to adapt planning logic dynamically based on supervisor tiers. Scaffolded `Tier2SemanticArbiter` for future integration. Added tests for Clock Supervisor logic and successfully tested the terminal fallback constraint. All 20 tests pass.
+Files: `backend/chronos/supervisor.py`, `backend/chronos/planner.py`, `backend/chronos/belief/tier2.py`, `backend/tests/test_supervisor.py`, `changes.md`
+Flags: Phase 3 is complete. Proceeding to Phase 4 (Integration, Dashboard, Deploy).
